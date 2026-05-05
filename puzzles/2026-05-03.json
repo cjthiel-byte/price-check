@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-03",
+  "title": "Gallon of Whole Milk (1975)",
+  "description": "A standard gallon of whole milk purchased at a US grocery store in 1975.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/240px-Milk_glass.jpg",
+  "answer_price": 1.57,
+  "category": "everyday_usa",
+  "year": 1975,
+  "price_context": "Today a gallon averages $3.80 \u2014 milk has roughly doubled in real cost.",
+  "source_url": "https://www.bls.gov/"
+}

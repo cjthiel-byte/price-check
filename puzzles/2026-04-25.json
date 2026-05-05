@@ -1,0 +1,11 @@
+{
+  "date": "2026-04-25",
+  "title": "US First-Class Postage Stamp (1970)",
+  "description": "The cost to mail a standard first-class letter anywhere in the United States in 1970.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/US_Airmail_stamp_1918_24c_inverted_jenny.jpg/240px-US_Airmail_stamp_1918_24c_inverted_jenny.jpg",
+  "answer_price": 0.06,
+  "category": "everyday_usa",
+  "year": 1970,
+  "price_context": "A first-class stamp today costs $0.73 \u2014 more than 12x the 1970 price.",
+  "source_url": "https://about.usps.com/who/profile/history/"
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-04-27",
+  "title": "Average Movie Ticket (1985)",
+  "description": "The average price of a single movie theater ticket in the United States in 1985.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Movie_theater_in_Dalian.jpg/320px-Movie_theater_in_Dalian.jpg",
+  "answer_price": 3.55,
+  "category": "everyday_usa",
+  "year": 1985,
+  "price_context": "The average US movie ticket today costs $13.10 \u2014 nearly 4x higher in nominal terms.",
+  "source_url": "https://www.natoonline.org/data/ticket-price/"
+}

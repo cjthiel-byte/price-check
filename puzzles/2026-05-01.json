@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-01",
+  "title": "McDonald's Big Mac (1980)",
+  "description": "An American classic \u2014 two all-beef patties on a sesame seed bun. Price from a US McDonald's in 1980.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Big_mac_burger.jpg/320px-Big_mac_burger.jpg",
+  "answer_price": 0.99,
+  "category": "everyday_usa",
+  "year": 1980,
+  "price_context": "A Big Mac today averages $5.29 \u2014 nearly a 6x increase in nominal price.",
+  "source_url": "https://www.officialdata.org/"
+}
