@@ -10,9 +10,22 @@ Usage:
 
 import csv
 import json
+import re
 import sys
 import urllib.request
 from datetime import datetime, timezone
+
+
+def normalize_image_url(url):
+    """Convert upload.wikimedia.org paths to Special:FilePath (no hash required)."""
+    m = re.match(
+        r'https://upload\.wikimedia\.org/wikipedia/(?:commons|en)/(?:thumb/)?[0-9a-f]/[0-9a-f]{2}/(.+?)(?:/\d+px-.+)?$',
+        url,
+    )
+    if m:
+        filename = m.group(1)
+        return f'https://commons.wikimedia.org/wiki/Special:FilePath/{filename}'
+    return url
 
 PUZZLES_DIR = "puzzles"
 
@@ -37,7 +50,7 @@ def parse_puzzles(csv_text):
             "date": date,
             "title": row.get("title", "").strip(),
             "description": row.get("description", "").strip(),
-            "image_url": row.get("image_url", "").strip(),
+            "image_url": normalize_image_url(row.get("image_url", "").strip()),
             "answer_price": float(answer_raw) if answer_raw else 0.0,
             "category": row.get("category", "").strip(),
             "year": int(year_raw) if year_raw else None,
