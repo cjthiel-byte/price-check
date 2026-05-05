@@ -1,4 +1,4 @@
-// state.js — localStorage read/write for streak and game history
+// state.js — localStorage helpers
 
 const STATE_KEY = 'pricecheck_state';
 
@@ -13,6 +13,11 @@ function saveState(state) {
 }
 
 function getTodayUTC() {
-  const now = new Date();
-  return now.toISOString().slice(0, 10); // "YYYY-MM-DD"
+  return new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+}
+
+function getYesterdayUTC() {
+  const d = new Date();
+  d.setUTCDate(d.getUTCDate() - 1);
+  return d.toISOString().slice(0, 10);
 }
