@@ -1,0 +1,11 @@
+{
+  "date": "2026-06-23",
+  "title": "Gallon of Gasoline \u2014 US Peak Price (2008)",
+  "description": "The all-time average price for a gallon of regular unleaded gasoline at US pumps. Reached in June 2008 during the oil price surge.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/GasPump_gobeirne.jpg",
+  "answer_price": 4.11,
+  "category": "everyday_usa",
+  "year": 2008,
+  "price_context": "The 2008 spike was driven by speculation and surging demand from China. Prices collapsed to $1.68 by December 2008.",
+  "source_url": "https://www.eia.gov/"
+}

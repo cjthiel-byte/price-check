@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-12",
+  "title": "NYC Subway Fare (1970)",
+  "description": "The cost of a single subway ride on the New York City Transit system in 1970.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/NYC_subway_token.jpg",
+  "answer_price": 0.3,
+  "category": "everyday_usa",
+  "year": 1970,
+  "price_context": "A single NYC subway ride today costs $2.90 \u2014 nearly 10x the 1970 fare in nominal terms.",
+  "source_url": "https://en.wikipedia.org/wiki/New_York_City_subway_fares"
+}

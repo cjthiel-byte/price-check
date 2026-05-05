@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-09",
+  "title": "US Gallon of Gasoline (1972)",
+  "description": "The average price for one gallon of regular unleaded gasoline at a US pump in 1972.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/GasPump_gobeirne.jpg",
+  "answer_price": 0.36,
+  "category": "everyday_usa",
+  "year": 1972,
+  "price_context": "The 1973 oil embargo hit the following year \u2014 prices nearly doubled to $0.59 by 1974.",
+  "source_url": "https://www.eia.gov/"
+}
