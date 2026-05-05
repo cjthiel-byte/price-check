@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-16",
+  "title": "New York Times (Single Copy 1960)",
+  "description": "The cover price of a single copy of The New York Times newspaper sold at a newsstand in 1960.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/NewYorkTimesNewsstand.jpg",
+  "answer_price": 0.05,
+  "category": "everyday_usa",
+  "year": 1960,
+  "price_context": "A single print copy of The New York Times costs $4.00 today \u2014 an 80x increase over 65 years.",
+  "source_url": "https://en.wikipedia.org/wiki/The_New_York_Times"
+}

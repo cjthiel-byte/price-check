@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-06",
+  "title": "Dozen Eggs \u2014 US Average (1980)",
+  "description": "The average retail price for one dozen Grade A large eggs at a US grocery store in 1980.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Chicken_eggs_in_a_nest_-_studioshot.jpg",
+  "answer_price": 0.84,
+  "category": "everyday_usa",
+  "year": 1980,
+  "price_context": "A dozen eggs averaged $4.99 in early 2026 \u2014 a 6x increase driven partly by avian flu outbreaks.",
+  "source_url": "https://www.bls.gov/"
+}

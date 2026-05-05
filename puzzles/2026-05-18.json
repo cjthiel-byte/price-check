@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-18",
+  "title": "Atari 2600 (1977)",
+  "description": "The console that brought arcade games into American living rooms. Originally sold as the Atari VCS at launch in 1977.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Atari-2600-Wood-4Sw-Set.jpg",
+  "answer_price": 199.99,
+  "category": "retro_tech",
+  "year": 1977,
+  "price_context": "Adjusted for inflation this is about $1030 today. The 2600 sold over 30 million units.",
+  "source_url": "https://en.wikipedia.org/wiki/Atari_2600"
+}

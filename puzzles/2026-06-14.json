@@ -1,0 +1,11 @@
+{
+  "date": "2026-06-14",
+  "title": "Cup of Coffee at a US Diner (1975)",
+  "description": "The price of a regular cup of drip coffee at a typical American diner in 1975 \u2014 free refills included.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
+  "answer_price": 0.25,
+  "category": "everyday_usa",
+  "year": 1975,
+  "price_context": "A diner coffee today typically costs $2.50\u2013$4.00. Adjusted for inflation the 1975 price would be about $1.50 today.",
+  "source_url": "https://www.bls.gov/"
+}

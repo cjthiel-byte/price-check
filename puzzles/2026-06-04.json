@@ -1,0 +1,11 @@
+{
+  "date": "2026-06-04",
+  "title": "Coca-Cola from a Vending Machine (1975)",
+  "description": "The price of a single 12 oz can of Coca-Cola from a vending machine in the United States in 1975.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Cocacola-can.png",
+  "answer_price": 0.15,
+  "category": "everyday_usa",
+  "year": 1975,
+  "price_context": "Coca-Cola famously held its vending machine price at $0.05 for 70 years \u2014 from 1886 to 1959.",
+  "source_url": "https://en.wikipedia.org/wiki/Coca-Cola"
+}

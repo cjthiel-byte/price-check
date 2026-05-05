@@ -1,0 +1,11 @@
+{
+  "date": "2026-05-30",
+  "title": "Loaf of White Bread \u2014 US Average (1980)",
+  "description": "The average retail price for a standard loaf of white sandwich bread at a US grocery store in 1980.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Fresh_made_bread_05.jpg",
+  "answer_price": 0.51,
+  "category": "everyday_usa",
+  "year": 1980,
+  "price_context": "A loaf of white bread today averages $2.25 \u2014 about 4x higher in nominal terms over 45 years.",
+  "source_url": "https://www.bls.gov/"
+}
