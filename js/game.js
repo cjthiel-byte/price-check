@@ -102,6 +102,7 @@ function renderPuzzleCard() {
           src="${puzzle.image_url}"
           alt="${puzzle.title}"
           class="puzzle-image"
+          referrerpolicy="no-referrer"
           onerror="this.classList.add('img-failed')"
         />
         <div class="puzzle-image-placeholder" aria-hidden="true">🏷️</div>
