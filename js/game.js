@@ -1,6 +1,6 @@
 // game.js — core game logic
 
-const MAX_GUESSES = 3;
+const MAX_GUESSES = 5;
 
 let puzzle = null;
 let guesses = [];
@@ -124,7 +124,6 @@ function renderGuessHistory() {
         <span class="guess-number">Guess ${i + 1}</span>
         <span class="guess-amount">${fmt(g)}</span>
         <span class="guess-direction">${dirLabel}</span>
-        <span class="guess-off">${pct.toFixed(1)}% off</span>
       </div>
     `;
   }).join('');
@@ -187,6 +186,10 @@ function render() {
 
   el.innerHTML = html;
   bindEvents();
+
+  if (!gameOver) {
+    document.getElementById('guess-input')?.focus();
+  }
 }
 
 function bindEvents() {
@@ -266,6 +269,11 @@ async function init() {
   try {
     puzzle = await loadTodaysPuzzle();
 
+    // Remember which puzzle was last viewed so the archive opens on that month
+    const s = getState();
+    s.lastViewedDate = puzzle.date;
+    saveState(s);
+
     // Restore state if already played this puzzle
     const saved = getState().history[puzzle.date];
     if (saved?.completed) {
@@ -281,3 +289,4 @@ async function init() {
 }
 
 init();
+

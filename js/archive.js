@@ -23,8 +23,9 @@ let minYear, minMonth;
 async function init() {
   state = getState();
 
-  const today = getTodayUTC();
-  [currentYear, currentMonth] = today.split('-').map(Number);
+  // Open on the month of the last puzzle the user viewed, or today
+  const startDate = state.lastViewedDate || getTodayUTC();
+  [currentYear, currentMonth] = startDate.split('-').map(Number);
 
   try {
     const res = await fetch('puzzles/index.json');
@@ -114,7 +115,8 @@ function renderDay(d, today) {
   if (isFuture || !hasPuzzle) {
     cls += isFuture ? ' future' : ' no-puzzle';
   } else if (completed) {
-    cls += ' completed';
+    const won = saved.score === 1000;
+    cls += won ? ' completed won' : ' completed lost';
     inner += `<span class="cal-score">${saved.score}</span>`;
   } else {
     cls += ' playable';

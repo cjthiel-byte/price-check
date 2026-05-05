@@ -37,6 +37,34 @@ header {
   border-bottom: 4px solid var(--gold);
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.htp-trigger {
+  background: none;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.8);
+  width: 26px;
+  height: 26px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.htp-trigger:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 .logo {
   font-family: 'Fredoka One', cursive;
   font-size: 1.6rem;
@@ -165,7 +193,7 @@ main {
 
 .guess-row {
   display: grid;
-  grid-template-columns: 60px 1fr 1fr 80px;
+  grid-template-columns: 60px 1fr 1fr;
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 1rem;
@@ -483,15 +511,26 @@ main {
   color: #fff;
 }
 
-/* Completed days */
-.cal-day.completed {
+/* Completed — won (within 5%) */
+.cal-day.completed.won {
   background: var(--green);
   cursor: pointer;
 }
 
-.cal-day.completed:hover {
+.cal-day.completed.won:hover {
   transform: scale(1.06);
   box-shadow: 0 4px 12px rgba(45,158,107,0.4);
+}
+
+/* Completed — lost (didn't hit within 5%) */
+.cal-day.completed.lost {
+  background: var(--red);
+  cursor: pointer;
+}
+
+.cal-day.completed.lost:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(214,40,40,0.4);
 }
 
 .cal-day.completed .cal-day-num {
@@ -694,3 +733,81 @@ main {
   color: var(--navy);
   margin-bottom: 1.25rem;
 }
+
+/* ── How to Play modal ── */
+
+#htp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#htp-modal.htp-hidden {
+  display: none;
+}
+
+.htp-card {
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.htp-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.htp-steps {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.htp-higher { color: var(--orange); font-weight: 700; }
+.htp-lower  { color: var(--blue);   font-weight: 700; }
+
+.htp-scoring {
+  background: var(--grey-light);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.htp-scoring-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.htp-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  padding: 0.2rem 0;
+}
+
+.htp-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 0.2rem 0.6rem;
+  color: #fff;
+}
+
+.htp-badge.green  { background: var(--green); }
+.htp-badge.yellow { background: var(--gold); color: var(--navy); }
+.htp-badge.red    { background: var(--red); }
