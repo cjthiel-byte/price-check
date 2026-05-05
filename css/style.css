@@ -392,6 +392,261 @@ main {
   font-weight: 600;
 }
 
+/* ── Calendar ── */
+
+.calendar {
+  width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.cal-month-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.35rem;
+  color: var(--navy);
+  text-align: center;
+  flex: 1;
+}
+
+.cal-nav {
+  background: none;
+  border: 2px solid var(--grey-mid);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.cal-nav:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: var(--grey-light);
+}
+
+.cal-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.cal-day-header {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding-bottom: 0.4rem;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: default;
+  transition: transform 0.1s, box-shadow 0.1s;
+  position: relative;
+}
+
+/* Days with a puzzle that haven't been played */
+.cal-day.playable {
+  background: var(--navy);
+  cursor: pointer;
+}
+
+.cal-day.playable:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.cal-day.playable .cal-day-num {
+  color: #fff;
+}
+
+/* Completed days */
+.cal-day.completed {
+  background: var(--green);
+  cursor: pointer;
+}
+
+.cal-day.completed:hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(45,158,107,0.4);
+}
+
+.cal-day.completed .cal-day-num {
+  color: #fff;
+}
+
+.cal-score {
+  font-size: clamp(0.5rem, 1.5vw, 0.65rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+/* Today highlight */
+.cal-day.today:not(.future) {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Future dates */
+.cal-day.future .cal-day-num {
+  color: var(--grey-mid);
+}
+
+/* No puzzle on this date */
+.cal-day.no-puzzle .cal-day-num {
+  color: var(--grey-mid);
+}
+
+/* Empty filler cells */
+.cal-day.empty {
+  background: none;
+}
+
+.cal-day-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.75rem, 2.2vw, 1rem);
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+/* ── Popup ── */
+
+#day-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.popup-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  padding: 1.75rem 1.5rem 1.5rem;
+  width: 100%;
+  max-width: 360px;
+  z-index: 1;
+  animation: popup-in 0.18s ease;
+}
+
+@keyframes popup-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+
+.popup-close:hover { color: var(--text); }
+
+.popup-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.popup-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.25rem;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.popup-category {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: 99px;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.popup-score {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 1rem;
+}
+
+.popup-guesses {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.popup-play-btn {
+  display: block;
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.7rem;
+  transition: background 0.15s;
+}
+
+.popup-play-btn:hover { background: #b91c1c; }
+
+.popup-loading {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 1rem 0;
+}
+
 /* ── Archive page ── */
 .archive-list {
   display: flex;
