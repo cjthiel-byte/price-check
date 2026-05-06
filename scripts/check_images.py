@@ -12,7 +12,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
-PUZZLES_DIR = Path("puzzles")
+PUZZLES_DIR = Path(__file__).parent.parent / "puzzles"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; PricecheckBot/1.0)"}
 
 
