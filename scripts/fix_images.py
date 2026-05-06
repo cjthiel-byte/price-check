@@ -42,6 +42,17 @@ def normalize_image_url(url):
     return url
 
 
+def clean_title(title):
+    """Strip year/edition noise so the search hits a real Wikipedia article."""
+    # Remove trailing " (Amazon)", " (PSA 9)", " (2024)", " (1st Generation 2007)", etc.
+    title = re.sub(r'\s*\([^)]*\)', '', title)
+    # Remove everything after an em-dash
+    title = re.split(r'\s*[—–]\s*', title)[0]
+    # Remove a leading 4-digit year  e.g. "1987 Nintendo..."
+    title = re.sub(r'^\d{4}\s+', '', title)
+    return title.strip()
+
+
 def wikipedia_main_image(title):
     """Query Wikipedia API for the main image of an article. Returns Special:FilePath URL or None."""
     encoded = urllib.parse.quote(title)
@@ -56,6 +67,8 @@ def wikipedia_main_image(title):
             data = json.loads(resp.read().decode())
         pages = data.get('query', {}).get('pages', {})
         for page in pages.values():
+            if list(pages.keys())[0] == '-1':
+                return None  # article not found
             src = page.get('original', {}).get('source')
             if src:
                 return normalize_image_url(src)
@@ -86,6 +99,31 @@ def wikipedia_search_image(query):
     return None
 
 
+def commons_search_image(query):
+    """Search Wikimedia Commons directly for a file matching the query."""
+    encoded = urllib.parse.quote(query)
+    url = (
+        f'https://commons.wikimedia.org/w/api.php?action=query'
+        f'&list=search&srnamespace=6&srsearch={encoded}&srlimit=3'
+        f'&format=json'
+    )
+    req = urllib.request.Request(url, headers=HEADERS)
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode())
+        results = data.get('query', {}).get('search', [])
+        for r in results:
+            # Strip "File:" prefix to get filename
+            filename = re.sub(r'^File:', '', r['title'])
+            candidate = f'https://commons.wikimedia.org/wiki/Special:FilePath/{urllib.parse.quote(filename)}'
+            if check_url(candidate):
+                print(f"    Commons hit: '{filename}'")
+                return candidate
+    except Exception as e:
+        print(f"    Commons search error for '{query}': {e}")
+    return None
+
+
 def main():
     files = sorted(p for p in PUZZLES_DIR.glob("*.json") if p.name != "index.json")
     print(f"Scanning {len(files)} puzzle files...\n")
@@ -108,12 +146,19 @@ def main():
         print(f"[{date}] BROKEN — {title}")
         print(f"    Current: {url}")
 
-        # Try 1: direct title lookup
-        new_url = wikipedia_main_image(title)
+        search_term = clean_title(title)
+        print(f"    Searching: '{search_term}'")
 
-        # Try 2: search if direct lookup failed
+        # Try 1: direct Wikipedia article lookup with cleaned title
+        new_url = wikipedia_main_image(search_term)
+
+        # Try 2: Wikipedia search
         if not new_url:
-            new_url = wikipedia_search_image(title)
+            new_url = wikipedia_search_image(search_term)
+
+        # Try 3: Wikimedia Commons file search
+        if not new_url:
+            new_url = commons_search_image(search_term)
 
         if new_url and check_url(new_url):
             print(f"    Fixed:   {new_url}")
@@ -125,7 +170,7 @@ def main():
             print(f"    COULD NOT FIX — needs manual URL")
             failed.append({"date": date, "title": title, "tried": new_url})
 
-        time.sleep(0.3)  # be polite to the API
+        time.sleep(1.5)  # be polite to the API
 
     print(f"\n{'='*70}")
     print(f"Fixed: {fixed}  |  Still broken: {len(failed)}")
